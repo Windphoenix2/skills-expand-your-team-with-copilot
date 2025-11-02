@@ -724,9 +724,9 @@ footer {
 }
 
 body.dark-mode #dark-mode-toggle {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 body.dark-mode #dark-mode-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.25);
 }

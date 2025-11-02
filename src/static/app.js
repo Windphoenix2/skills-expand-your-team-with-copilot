@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isDarkMode) {
       document.body.classList.add("dark-mode");
       darkModeIcon.textContent = "☀️";
+    } else {
+      darkModeIcon.textContent = "🌙";
     }
   }
 
@@ -21,7 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Event listener for dark mode toggle
-  darkModeToggle.addEventListener("click", toggleDarkMode);
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", toggleDarkMode);
+  }
 
   // Initialize dark mode on page load
   initializeDarkMode();
