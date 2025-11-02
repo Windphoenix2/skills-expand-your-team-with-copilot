@@ -474,6 +474,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Helper function to escape HTML special characters
+  function escapeHtml(text) {
+    const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, char => map[char]);
+  }
+
   // Function to render a single activity card
   function renderActivityCard(name, details) {
     const activityCard = document.createElement("div");
@@ -556,19 +568,19 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="share-buttons">
         <span class="share-label">Share:</span>
-        <button class="share-button share-twitter tooltip" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" aria-label="Share on Twitter">
+        <button class="share-button share-twitter tooltip" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" aria-label="Share on Twitter">
           <span class="share-icon">𝕏</span>
           <span class="tooltip-text">Share on Twitter</span>
         </button>
-        <button class="share-button share-facebook tooltip" data-activity="${name}" aria-label="Share on Facebook">
+        <button class="share-button share-facebook tooltip" data-activity="${escapeHtml(name)}" aria-label="Share on Facebook">
           <span class="share-icon">f</span>
           <span class="tooltip-text">Share on Facebook</span>
         </button>
-        <button class="share-button share-email tooltip" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" data-schedule="${formattedSchedule.replace(/"/g, '&quot;')}" aria-label="Share via Email">
+        <button class="share-button share-email tooltip" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-schedule="${escapeHtml(formattedSchedule)}" aria-label="Share via Email">
           <span class="share-icon">✉</span>
           <span class="tooltip-text">Share via Email</span>
         </button>
-        <button class="share-button share-copy tooltip" data-activity="${name}" aria-label="Copy Link">
+        <button class="share-button share-copy tooltip" data-activity="${escapeHtml(name)}" aria-label="Copy Link">
           <span class="share-icon">🔗</span>
           <span class="tooltip-text">Copy link to clipboard</span>
         </button>
